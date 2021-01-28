@@ -1,0 +1,52 @@
+<template>
+  <div>
+    <b-row align-v="center" align-h="center" class="order-info">
+      <b-col cols="8">
+        <b-jumbotron class="order-info-card">
+          <b-img src="../assets/images/item10.png" alt="" width="200"></b-img>
+          <h1 class="h1 order-info-title">{{ pagename }}</h1>
+          <p class="order-info-text">Вы можете перейти к каталогу начать покупки</p>
+          <b-button href="#" variant="primary" size="lg">Перейти на главную</b-button>
+        </b-jumbotron>
+      </b-col>
+    </b-row>
+  </div>
+</template>
+
+<script>
+
+export default {
+
+  layout: 'default',
+
+  data() {
+    return {
+      pagename: "Аккаунт создан"
+    }
+  },
+
+  // тестовый запрос для демонстрации возможностей
+
+  async asyncData({ $axios }) {
+
+    let planet = await $axios.$get('https://swapi.dev/api/planets/1');
+    console.log(planet)
+    return { planet }
+
+  },
+
+  methods: {
+    loadData: function() {
+      this.$axios.$get('https://swapi.dev/api/planets/2').then((result) => {
+        console.log(result)
+      })
+
+    }
+  }
+
+}
+</script>
+
+<style lang="scss">
+
+</style>
