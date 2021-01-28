@@ -87,10 +87,20 @@ body {
 }
 
 .login-form {
-  padding: 3.2rem 1.25rem;
-  padding-left: 0.75rem;
+  padding: 3.2rem 1.5rem;
+  padding-left: 0.5rem;
 }
 .login-form-title {
   font-size: 30px;
   font-weight: bold;
+}
+.login-form-text {
+  font-size: 18px;
+}
+.login-form-link {
+  text-decoration: underline;
+}
+
+.login-form .alert {
+  font-size: 16px;
 }

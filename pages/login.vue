@@ -5,12 +5,15 @@
         <b-card no-body class="login">
           <b-row align-h="center">
             <b-col>
-              <b-img src="../assets/images/signup.jpg" fluid alt=""></b-img>
+              <b-img src="../assets/images/login.jpg" fluid alt=""></b-img>
             </b-col>
             <b-col class="pl-0">
               <b-form @submit="onSubmit" @reset="onReset" class="login-form">
                 <div class="login-form-top">
-                  <p class="h1 login-form-title">Зарегистрируйтесь</p>
+                  <p class="h1 login-form-title">Войти</p>
+                  <p class="login-form-text">Войдите, чтобы управлять <br>
+                    или <a href="/signup" class="login-form-link">зарегистрируйтесь</a></p>
+                  <b-alert variant="warning" show>Пароль неверный. Попробуйте снова</b-alert>
                 </div>
                 <div class="login-form-bottom">
                   <b-form-group
@@ -76,7 +79,9 @@ export default {
 }
 </script>
 <style lang="scss">
-
+.login-form {
+  padding: 2rem 1.5rem;
+}
 .login-form-bottom {
   padding-top: 1rem;
 }
