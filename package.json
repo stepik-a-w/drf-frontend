@@ -1,0 +1,23 @@
+{
+  "name": "my-nuxt-project",
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "@nuxtjs/axios": "^5.12.4",
+    "babel": "^6.23.0",
+    "bootstrap-vue": "^2.21.1",
+    "nuxt": "^2.14.12",
+    "vue": "^2.6.12"
+  },
+  "devDependencies": {
+    "fibers": "^5.0.0",
+    "pug": "^3.0.0",
+    "pug-plain-loader": "^1.1.0",
+    "sass": "^1.32.4",
+    "sass-loader": "^10.1.1"
+  }
+}

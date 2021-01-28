@@ -1,0 +1,11 @@
+/*
+
+    Здесь пишем глобальные стили для всех лейаутов
+
+*/
+
+body {
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 20px;
+  line-height: 1.5;
+}
