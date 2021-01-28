@@ -85,3 +85,12 @@ body {
   font-size: 22px;
   line-height: 1.3;
 }
+
+.login-form {
+  padding: 3.2rem 1.25rem;
+  padding-left: 0.75rem;
+}
+.login-form-title {
+  font-size: 30px;
+  font-weight: bold;
+}

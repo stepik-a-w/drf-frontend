@@ -79,7 +79,7 @@
         </b-row>
       </b-col>
       <b-col cols="4">
-        <b-form @submit="onSubmit" @reset="onReset" class="cart-form ">
+        <b-form @submit="onSubmit" @reset="onReset" class="cart-form">
           <div class="px-4">
             <b-form-group class="mb-1">
               <p class="cart-form-info"><b>Всего коробочек:</b> 5</p>
