@@ -6,7 +6,7 @@
           <b-img src="../assets/images/item10.png" alt="" width="200"></b-img>
           <h1 class="h1 order-info-title">Заказ отправлен</h1>
           <p class="order-info-text">Скоро мы вам перезвоним, чтобы подтвердить его</p>
-          <b-button variant="primary" size="lg">Перейти к истории заказов</b-button>
+          <b-button href="/profile" variant="primary" size="lg">Перейти к истории заказов</b-button>
         </b-jumbotron>
       </b-col>
     </b-row>
@@ -48,26 +48,4 @@ export default {
 </script>
 
 <style lang="scss">
-.order-info {
-  margin-top: 7.8rem;
-  margin-bottom: 7.8rem;
-
-  &-card {
-    padding-top: 3.1rem;
-
-    text-align: center;
-  }
-
-  &-title {
-    padding-top: 0.5rem;
-    padding-bottom: 0.2rem;
-    font-size: 45px;
-  }
-  &-text {
-    max-width: 300px;
-    margin: 0 auto 1.4rem;
-    font-size: 22px;
-    line-height: 1.3;
-  }
-}
 </style>
