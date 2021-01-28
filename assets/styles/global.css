@@ -9,3 +9,53 @@ body {
   font-size: 20px;
   line-height: 1.5;
 }
+
+.items-cards .card {
+  padding: 0px 15px 15px;
+  border: none;
+  text-align: center;
+  background-color: #F5F5F5;
+}
+
+.items-cards .card img {
+  width: 100%;
+  max-width: 300px;
+}
+
+.items-cards .card-body {
+  text-align: left;
+}
+
+.items-cards .card-title {
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.items-cards-price {
+  text-align: right;
+  font-size: 27px;
+  font-weight: bold;
+}
+
+.items-cards .b-form-spinbutton {
+  outline: none;
+  background-color: #F5F5F5;
+  border-color: #6C757D;
+}
+.items-cards .b-form-spinbutton .border-left,
+.items-cards .b-form-spinbutton .border-right {
+  border-color: #6C757D!important;
+}
+
+.items-cards .b-form-spinbutton output {
+  color: #6C757D;
+  font-weight: bold;
+}
+
+
+.subtitle {
+  padding-top: 2.2rem;
+  margin-bottom: 2.8rem;
+  font-size: 37px;
+  font-weight: bold;
+}

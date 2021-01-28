@@ -242,58 +242,6 @@ export default {
   }
 }
 
-.subtitle {
-  padding-top: 2.2rem;
-  margin-bottom: 2.8rem;
-  font-size: 37px;
-  font-weight: bold;
-}
-
-.items-cards {
-  .card {
-    padding: 0px 15px 15px;
-    border: none;
-    text-align: center;
-    background-color: #F5F5F5;
-
-    img {
-      width: 100%;
-      max-width: 300px;
-    }
-
-    &-body {
-      text-align: left;
-    }
-
-    &-title {
-      font-size: 22px;
-      font-weight: 500;
-    }
-  }
-
-  &-price {
-    text-align: right;
-    font-size: 27px;
-    font-weight: bold;
-  }
-
-  .b-form-spinbutton {
-    outline: none;
-    background-color: #F5F5F5;
-    border-color: #6C757D;
-
-    .border-left,
-    .border-right {
-      border-color: #6C757D!important;
-    }
-
-    output {
-      color: #6C757D;
-      font-weight: bold;
-    }
-  }
-}
-
 .reviews-head {
   display: flex;
   align-items: center;
