@@ -7,7 +7,8 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
-    "@nuxtjs/axios": "^5.12.4",
+    "@nuxtjs/auth-next": "5.0.0-1611574754.9020f2a",
+    "@nuxtjs/axios": "^5.12.5",
     "babel": "^6.23.0",
     "bootstrap-vue": "^2.21.1",
     "nuxt": "^2.14.12",

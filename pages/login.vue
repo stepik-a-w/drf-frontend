@@ -8,12 +8,14 @@
               <b-img src="../assets/images/login.jpg" fluid alt=""></b-img>
             </b-col>
             <b-col class="pl-0">
-              <b-form @submit="onSubmit" @reset="onReset" class="login-form">
+              <b-form  class="login-form">
                 <div class="login-form-top">
                   <p class="h1 login-form-title">Войти</p>
                   <p class="login-form-text">Войдите, чтобы управлять <br>
                     или <a href="/signup" class="login-form-link">зарегистрируйтесь</a></p>
-                  <b-alert variant="warning" show>Пароль неверный. Попробуйте снова</b-alert>
+
+                  <b-alert variant="warning" v-if="isloginincorrect" show>Пароль неверный. Попробуйте снова</b-alert>
+
                 </div>
                 <div class="login-form-bottom">
                   <b-form-group
@@ -21,21 +23,19 @@
                     label="Электропочта:"
                     label-for="input-1"
                     :invalid-feedback="invalidFeedback"
-                    :state="state"
                   >
-                    <b-form-input id="input-1" v-model="email" :state="state" trim></b-form-input>
+                    <b-form-input id="input-1" v-model="userdata.username" trim></b-form-input>
                   </b-form-group>
                   <b-form-group
                     id="fieldset-2"
                     label="Пароль"
                     label-for="input-2"
                     :invalid-feedback="invalidFeedback"
-                    :state="state"
                   >
-                    <b-form-input id="input-2" v-model="pass" :state="state" trim></b-form-input>
+                    <b-form-input id="input-2" v-model="userdata.password"  trim></b-form-input>
                   </b-form-group>
                   <b-form-group class="pt-2">
-                    <b-button type="submit" variant="primary" size="lg">Зарегистрироваться</b-button>
+                    <b-button v-on:click="tryAuth" variant="primary" size="lg">Войти</b-button>
                   </b-form-group>
                 </div>
               </b-form>
@@ -47,36 +47,60 @@
   </div>
 </template>
 <script>
-export default {
 
-  layout: 'logining',
 
-  data() {
-    return {
-      pagename: "Регистрация"
+    import { BForm } from 'bootstrap-vue'
+
+    export default {
+
+        layout: 'default',
+
+        data() {
+            return {
+                pagename: "Форма авторизации",
+                isloginincorrect: false,
+                host: "http://127.0.0.1:8000/api/v1",
+                invalidFeedback: "Неверный логин или пароль",
+                userdata: {username: "admin", password: "admin"}
+            }
+        },
+
+
+        methods: {
+
+            tryAuth () {
+
+                 this.$axios.$post(this.host+'/users/auth/login', this.userdata).then((result) => {
+
+                        let token = result.token;
+
+                        this.$auth.$storage.setLocalStorage("token", token);
+                        this.$axios.setToken('Token'+" "+token);
+
+                        this.isloginincorrect = false;
+
+                        console.log("Токен записан")
+
+                        return redirect({name:'item'});
+
+                 }).catch((error) => {
+
+                     console.log("Произошла ошибка, смотрите в консоль");
+
+                     this.isloginincorrect = true;
+
+
+
+                })
+
+            },
+
+
+
+        }
     }
-  },
 
-  // тестовый запрос для демонстрации возможностей
 
-  async asyncData({ $axios }) {
-
-    let planet = await $axios.$get('https://swapi.dev/api/planets/1');
-    console.log(planet)
-    return { planet }
-
-  },
-
-  methods: {
-    loadData: function() {
-      this.$axios.$get('https://swapi.dev/api/planets/2').then((result) => {
-        console.log(result)
-      })
-
-    }
-  }
-
-}
 </script>
 <style lang="scss">
 .login-form {

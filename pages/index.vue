@@ -13,213 +13,58 @@
       </b-row>
     </b-jumbotron>
 
-    <h2 class="h1 subtitle">Полезное</h2>
-    <b-card-group deck class="items-cards">
-      <b-card
-        title="Название коробочки в пару строк всего"
-        img-src="../assets/images/item3.png"
-        img-alt=""
-        img-top
-        img-width="300">
-        <b-row class="pt-3" align-v="center">
-          <b-col>
-            <b-form-spinbutton id="item-counter" v-model="value_item" min="1" max="100" step="1"></b-form-spinbutton>
-          </b-col>
-          <b-col class="items-cards-price">
-            2650 P
-          </b-col>
-        </b-row>
-      </b-card>
-      <b-card
-        title="Название коробочки в пару строк всего"
-        img-src="../assets/images/item2.png"
-        img-alt=""
-        img-top
-        img-width="300">
-        <b-row class="pt-3" align-v="center">
-          <b-col>
-            <b-button variant="primary">В корзинку</b-button>
-          </b-col>
-          <b-col class="items-cards-price">
-            2650 P
-          </b-col>
-        </b-row>
-      </b-card>
-      <b-card
-        title="Название коробочки в пару строк всего"
-        img-src="../assets/images/item7.png"
-        img-alt=""
-        img-top
-        img-width="300">
-        <b-row class="pt-3" align-v="center">
-          <b-col>
-            <b-button variant="primary">В корзинку</b-button>
-          </b-col>
-          <b-col class="items-cards-price">
-            2650 P
-          </b-col>
-        </b-row>
-      </b-card>
+    <b-card-group v-for="item in items" deck class="items-cards">
+
+      <card :id="item.id" :img="item.image" :title="item.title" :price="item.price" />
+
     </b-card-group>
 
-    <h2 class="h1 subtitle">Сладкое</h2>
-    <b-card-group deck class="items-cards">
-      <b-card
-        title="Название коробочки в пару строк всего"
-        img-src="../assets/images/item4.png"
-        img-alt=""
-        img-top
-        img-width="300">
-        <b-row class="pt-3" align-v="center">
-          <b-col>
-            <b-form-spinbutton id="item-counter" v-model="value_item" min="1" max="100" step="1"></b-form-spinbutton>
-          </b-col>
-          <b-col class="items-cards-price">
-            2650 P
-          </b-col>
-        </b-row>
-      </b-card>
-      <b-card
-        title="Название коробочки в пару строк всего"
-        img-src="../assets/images/item5.png"
-        img-alt=""
-        img-top
-        img-width="300">
-        <b-row class="pt-3" align-v="center">
-          <b-col>
-            <b-button variant="primary">В корзинку</b-button>
-          </b-col>
-          <b-col class="items-cards-price">
-            2650 P
-          </b-col>
-        </b-row>
-      </b-card>
-      <b-card
-        title="Название коробочки в пару строк всего"
-        img-src="../assets/images/item6.png"
-        img-alt=""
-        img-top
-        img-width="300">
-        <b-row class="pt-3" align-v="center">
-          <b-col>
-            <b-button variant="primary">В корзинку</b-button>
-          </b-col>
-          <b-col class="items-cards-price">
-            2650 P
-          </b-col>
-        </b-row>
-      </b-card>
-    </b-card-group>
-
-    <h2 class="h1 subtitle">Новое</h2>
-    <b-card-group deck class="items-cards">
-      <b-card
-        title="Название коробочки в пару строк всего"
-        img-src="../assets/images/item1.png"
-        img-alt=""
-        img-top
-        img-width="300">
-        <b-row class="pt-3" align-v="center">
-          <b-col>
-            <b-form-spinbutton id="item-counter" v-model="value_item" min="1" max="100" step="1"></b-form-spinbutton>
-          </b-col>
-          <b-col class="items-cards-price">
-            2650 P
-          </b-col>
-        </b-row>
-      </b-card>
-      <b-card
-        title="Название коробочки в пару строк всего"
-        img-src="../assets/images/item8.png"
-        img-alt=""
-        img-top
-        img-width="300">
-        <b-row class="pt-3" align-v="center">
-          <b-col>
-            <b-button variant="primary">В корзинку</b-button>
-          </b-col>
-          <b-col class="items-cards-price">
-            2650 P
-          </b-col>
-        </b-row>
-      </b-card>
-      <b-card
-        title="Название коробочки в пару строк всего"
-        img-src="../assets/images/item9.png"
-        img-alt=""
-        img-top
-        img-width="300">
-        <b-row class="pt-3" align-v="center">
-          <b-col>
-            <b-button variant="primary">В корзинку</b-button>
-          </b-col>
-          <b-col class="items-cards-price">
-            2650 P
-          </b-col>
-        </b-row>
-      </b-card>
-    </b-card-group>
-
-    <div class="reviews-head">
-      <h2 class="h1 subtitle mr-4 pr-2">Отзывы</h2>
-      <b-button variant="dark" size="lg"> 
-        <b-icon icon="ArrowRepeat"></b-icon>
-        Показать еще
-      </b-button>
-    </div>
-    <b-card-group deck class="reviews-cards mb-5">
-      <b-card>
-        <b-card-text class="reviews-cards-text">
-          Очень качественные и&nbsp;в&nbsp;то&nbsp;же время недорогие вещи. Hse Store учли все наши пожелания и&nbsp;доставили вещи вовремя, спасибо!
-        </b-card-text>
-        <b-card-text>Вишневский Олег</b-card-text>
-      </b-card>
-      <b-card>
-        <b-card-text class="reviews-cards-text">
-          Зарегистрирована на&nbsp;нескольких сайтах и&nbsp;этот тоже не&nbsp;прошла мимо. Оказался одним из&nbsp;лучших. Все просто и&nbsp;гениально. Много заказов, хорошая оплата, легкая регистрация, а&nbsp;главное без вложений.
-        </b-card-text>
-        <b-card-text>Ильин Алексей</b-card-text>
-      </b-card>
-    </b-card-group>
   </div>
 </template>
 
 <script>
 import { BIcon, BIconArrowRepeat } from 'bootstrap-vue' // подключение иконки
 
+
 export default {
+
   components: {
     BIcon,
-    BIconArrowRepeat
+    BIconArrowRepeat,
   },
 
   layout: 'default',
 
   data() {
     return {
+      items: [],
       pagename: "Главная",
-      value_item: 2
+      value_item: 2,
+      host: "http://127.0.0.1:8000/api/v1",
     }
   },
 
-  // тестовый запрос для демонстрации возможностей
+    methods: {
 
-  async asyncData({ $axios }) {
+        loadData: function() {
+            this.$axios.$get(this.host+'/items').then((result) => {
+                this.items = result.results;
+                console.log(this.items)
+                console.log("Данные загружены")
+            })
+        }
 
-    let planet = await $axios.$get('https://swapi.dev/api/planets/1');
-    console.log(planet)
-    return { planet }
+    },
+
+  created() {
+
+      var token = this.$auth.$storage.getLocalStorage("token");
+
+      this.$axios.setToken('Token'+" "+token);
+
+      this.loadData();
 
   },
-
-  methods: {
-    loadData: function() {
-      this.$axios.$get('https://swapi.dev/api/planets/2').then((result) => {
-        console.log(result)
-      })
-
-    }
-  }
 
 }
 </script>
@@ -241,14 +86,12 @@ export default {
     font-size: 27px;
   }
 }
-
 .reviews-head {
   display: flex;
   align-items: center;
   padding-top: 1rem; 
   padding-bottom: .55rem; 
 }
-
 .reviews-cards {
   .card {
     position: relative;
@@ -274,5 +117,4 @@ export default {
     font-style: italic;
   }
 }
-
 </style>
