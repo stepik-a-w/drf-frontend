@@ -13,16 +13,17 @@
       </b-row>
     </b-jumbotron>
 
-    <b-card-group v-for="item in items" deck class="items-cards">
-
-      <card :id="item.id" :img="item.image" :title="item.title" :price="item.price" />
-
+    <b-card-group v-for="item in $store.state.items" deck class="items-cards">
+      <b-col cols="12">
+        <card :id="item.id" :img="item.image" :title="item.title" :price="item.price" />
+      </b-col>
     </b-card-group>
 
   </div>
 </template>
 
 <script>
+
 import { BIcon, BIconArrowRepeat } from 'bootstrap-vue' // подключение иконки
 
 
@@ -47,26 +48,21 @@ export default {
     methods: {
 
         loadData: function() {
-            this.$axios.$get(this.host+'/items').then((result) => {
-                this.items = result.results;
-                console.log(this.items)
-                console.log("Данные загружены")
-            })
+
+            this.$store.dispatch('fetch_items');
+
         }
 
     },
 
   created() {
 
-      var token = this.$auth.$storage.getLocalStorage("token");
-
-      this.$axios.setToken('Token'+" "+token);
-
       this.loadData();
 
   },
 
 }
+
 </script>
 
 <style lang="scss">

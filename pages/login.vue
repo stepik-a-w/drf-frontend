@@ -70,34 +70,14 @@
 
             tryAuth () {
 
-                 this.$axios.$post(this.host+'/users/auth/login', this.userdata).then((result) => {
+                 this.$store.dispatch('make_login');
 
-                        let token = result.token;
-
-                        this.$auth.$storage.setLocalStorage("token", token);
-                        this.$axios.setToken('Token'+" "+token);
-
-                        this.isloginincorrect = false;
-
-                        console.log("Токен записан")
-
-                        return redirect({name:'item'});
-
-                 }).catch((error) => {
-
-                     console.log("Произошла ошибка, смотрите в консоль");
-
-                     this.isloginincorrect = true;
-
-
-
-                })
+                 return this.$router.push('/');
 
             },
 
-
-
         }
+
     }
 
 

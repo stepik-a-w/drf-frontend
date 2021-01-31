@@ -1,169 +1,73 @@
 <template>
   <div>
+
     <h1 class="h1 mb-4 cart-title">Корзина</h1>
+
     <b-row class="pb-5">
+
       <b-col cols="8">
         <b-row class="items-cards">
-          <b-col cols="6">
-            <b-card
-              class="mb-3"
-              title="Название коробочки в пару строк всего"
-              img-src="../assets/images/item3.png"
-              img-alt=""
-              img-top
-              img-width="300">
-              <b-row class="pt-3" align-v="center">
-                <b-col>
-                  <b-form-spinbutton id="item-counter" v-model="value_item" min="1" max="100" step="1"></b-form-spinbutton>
-                </b-col>
-                <b-col class="items-cards-price">
-                  2650 P
-                </b-col>
-              </b-row>
-            </b-card>
-          </b-col>
-          <b-col cols="6">
-            <b-card 
-              class="mb-3"
-              title="Название коробочки в пару строк всего" 
-              img-src="../assets/images/item2.png" 
-              img-alt="" 
-              img-top 
-              img-width="300">
-              <b-row class="pt-3" align-v="center">
-                <b-col>
-                  <b-form-spinbutton id="item-counter" v-model="value_item" min="1" max="100" step="1"></b-form-spinbutton>
-                </b-col>
-                <b-col class="items-cards-price">
-                  2650 P
-                </b-col>
-              </b-row>
-            </b-card>
-          </b-col>
-          <b-col cols="6">
-            <b-card 
-              class="mb-3"
-              title="Название коробочки в пару строк всего" 
-              img-src="../assets/images/item7.png" 
-              img-alt="" 
-              img-top 
-              img-width="300">
-              <b-row class="pt-3" align-v="center">
-                <b-col>
-                  <b-form-spinbutton id="item-counter" v-model="value_item" min="1" max="100" step="1"></b-form-spinbutton>
-                </b-col>
-                <b-col class="items-cards-price">
-                  2650 P
-                </b-col>
-              </b-row>
-            </b-card>
-          </b-col>
-          <b-col cols="6">
-            <b-card 
-            class="mb-3"
-            title="Название коробочки в пару строк всего" 
-            img-src="../assets/images/item7.png" 
-            img-alt="" 
-            img-top 
-            img-width="300">
-              <b-row class="pt-3" align-v="center">
-                <b-col>
-                  <b-form-spinbutton id="item-counter" v-model="value_item" min="1" max="100" step="1"></b-form-spinbutton>
-                </b-col>
-                <b-col class="items-cards-price">
-                  2650 P
-                </b-col>
-              </b-row>
-            </b-card>
-          </b-col>
+
+          <b-card-group v-for="cart_item in cart_items" deck class="items-cards">
+
+            <b-col cols="" v-if="cart_item.quantity>0">
+
+              <card
+                      :id="cart_item.item.id"
+                      :img="cart_item.item.image"
+                      :title="cart_item.item.title"
+                      :price="cart_item.price"
+                      :qty="cart_item.quantity"
+              />
+
+            </b-col>
+          </b-card-group>
+
         </b-row>
+
       </b-col>
-      <b-col cols="4">
-        <b-form @submit="onSubmit" @reset="onReset" class="cart-form">
-          <div class="px-4">
-            <b-form-group class="mb-1">
-              <p class="cart-form-info"><b>Всего коробочек:</b> 5</p>
-            </b-form-group>
-            <b-form-group>
-              <p class="cart-form-info"><b>Общая сумма:</b> 6420 Р</p>
-            </b-form-group>
-            <b-form-group
-              class="mb-4"
-              label="Адрес доставки:"
-              label-for="textarea"
-              :invalid-feedback="invalidFeedback"
-              :state="state"
-            >
-               <b-form-textarea
-                id="textarea"
-                v-model="text"
-                rows="5"
-                max-rows="7"
-              ></b-form-textarea>
-            </b-form-group>
-            <b-form-group class="mb-1">
-              <p class="cart-form-label">Дата доставки:</p>
-              <div class="cart-form-date mb-2">
-                <b-form-select
-                  v-model="selected" :options="options">
-                  <b-form-select-option value="30">Завтра 30 января</b-form-select-option>
-                  <b-form-select-option value="29">Сегодня</b-form-select-option>
-                  <b-form-select-option value="week">Через неделю</b-form-select-option>
-                </b-form-select>
-              </div>
-            </b-form-group>
-            <b-form-group class="mb-1">
-              <p class="cart-form-label">Время доставки:</p>
-              <div class="cart-form-time mb-3">
-                <b-form-select
-                  v-model="selected" :options="options">
-                  <b-form-select-option value="8">8:00 - 11:00</b-form-select-option>
-                  <b-form-select-option value="12">12:00 - 15:00</b-form-select-option>
-                  <b-form-select-option value="week">15:00 - 18:00</b-form-select-option>
-                  <b-form-select-option value="week">19:00 - 22:00</b-form-select-option>
-                </b-form-select>
-              </div>
-            </b-form-group>
-          </div>
-          <b-form-group class="cart-form-bottom px-4">
-            <b-button type="submit" variant="primary" size="lg">Оформить заказ</b-button>
-          </b-form-group>
-        </b-form>
-      </b-col>
+
     </b-row>
   </div>
 </template>
 <script>
-export default {
 
-  layout: 'default',
 
-  data() {
-    return {
-      pagename: "Профиль"
+    export default {
+
+        layout: 'default',
+
+        data() {
+            return {
+                cart_items: [],
+                host: "http://127.0.0.1:8000/api/v1",
+            }
+        },
+
+        methods: {
+
+            loadData: function() {
+                this.$axios.$get(this.host+'/carts/items').then((result) => {
+
+                    this.cart_items = result.results
+                    console.log(this.cart_items);
+                })
+            }
+
+        },
+
+        created() {
+
+            var token = this.$auth.$storage.getLocalStorage("token");
+
+            this.$axios.setToken('Token'+" "+token);
+
+            this.loadData();
+
+        },
+
     }
-  },
 
-  // тестовый запрос для демонстрации возможностей
-
-  async asyncData({ $axios }) {
-
-    let planet = await $axios.$get('https://swapi.dev/api/planets/1');
-    console.log(planet)
-    return { planet }
-
-  },
-
-  methods: {
-    loadData: function() {
-      this.$axios.$get('https://swapi.dev/api/planets/2').then((result) => {
-        console.log(result)
-      })
-
-    }
-  }
-
-}
 </script>
 <style lang="scss">
 .cart {

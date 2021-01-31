@@ -43,43 +43,44 @@
       </b-col>
       <b-col cols="4">
         <h2 class="h3 mb-5">Профиль</h2>
-        <b-form @submit="onSubmit" @reset="onReset" class="profile-form px-4">
+        <b-form class="profile-form px-4">
+
+
           <b-form-group
             id="fieldset-1"
-            label="Имя:"
+            label="Почта:"
             label-for="input-1"
-            :invalid-feedback="invalidFeedback"
-            :state="state"
           >
-            <b-form-input id="input-1" v-model="name" :state="state" trim></b-form-input>
+            <b-form-input id="input-1" v-model="email" trim></b-form-input>
           </b-form-group>
+
+
           <b-form-group
             id="fieldset-2"
-            label="Фамилия:"
+            label="Имя:"
             label-for="input-2"
-            :invalid-feedback="invalidFeedback"
-            :state="state"
           >
-            <b-form-input id="input-2" v-model="name" :state="state" trim></b-form-input>
+            <b-form-input id="input-2" v-model="first_name" trim></b-form-input>
           </b-form-group>
+
+
           <b-form-group
             id="fieldset-3"
-            label="Отчество:"
+            label="Фамилия:"
             label-for="input-3"
-            :invalid-feedback="invalidFeedback"
-            :state="state"
           >
-            <b-form-input id="input-3" v-model="name" :state="state" trim></b-form-input>
+            <b-form-input id="input-3" v-model="last_name" trim></b-form-input>
           </b-form-group>
+
+
           <b-form-group
             id="fieldset-4"
             label="Телефон:"
             label-for="input-4"
-            :invalid-feedback="invalidFeedback"
-            :state="state"
-          >
-            <b-form-input id="input-4" v-model="tel" :state="state" trim></b-form-input>
+          ><b-form-input id="input-4" trim></b-form-input>
+
           </b-form-group>
+
           <b-button type="submit" variant="primary" size="lg" class="mt-3">Сохранить</b-button>
         </b-form>
       </b-col>
@@ -95,7 +96,11 @@ export default {
 
   data() {
     return {
-      pagename: "Профиль"
+
+      email: this.$store.state.user.email,
+      first_name: this.$store.state.user.first_name,
+      last_name: this.$store.state.user.last_name,
+
     }
   },
 
@@ -103,20 +108,24 @@ export default {
 
   async asyncData({ $axios }) {
 
-    let planet = await $axios.$get('https://swapi.dev/api/planets/1');
-    console.log(planet)
-    return { planet }
+    //
 
   },
 
   methods: {
+
     loadData: function() {
-      this.$axios.$get('https://swapi.dev/api/planets/2').then((result) => {
-        console.log(result)
-      })
+
+        this.$store.dispatch('fetch_user');
 
     }
-  }
+  },
+
+  created() {
+
+        this.loadData();
+
+  },
 
 }
 </script>

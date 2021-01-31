@@ -1,7 +1,6 @@
 <template>
 
-
-    <b-card class="col-4"
+    <b-card class=""
             :title= "title"
             :img-src= "img"
             img-alt=""
@@ -9,16 +8,19 @@
             img-width="300">
 
         <b-row class="pt-3" align-v="center">
+
             <b-col>
                 <b-form-spinbutton v-if="qty>0" v-on:click="addToCart" id="item-counter" v-model="qty"  min="0" max="100" step="1"></b-form-spinbutton>
                 <b-button v-if="qty==0" v-on:click="qty+=1, addToCart" variant="primary">В корзинку</b-button>
             </b-col>
+
             <b-col class="items-cards-price">
                 {{ price }} P
             </b-col>
-        </b-row>
-    </b-card>
 
+        </b-row>
+
+    </b-card>
 
 </template>
 
@@ -54,12 +56,17 @@
                 default: "",
             },
 
+            'qty': {
+                //type: Number,
+                default: 0
+            }
+
         },
 
         data() {
             return {
                 host: "http://127.0.0.1:8000/api/v1",
-                qty: 0
+                //qty: 0
             }
         },
 
@@ -94,6 +101,7 @@
         },
 
         watch: {
+
             qty: function (val) {
 
                 this.addToCart()

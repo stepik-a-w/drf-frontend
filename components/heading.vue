@@ -6,15 +6,52 @@
       <b-collapse id="nav-collapse" is-nav>
         <!-- Right aligned nav items -->
         <b-navbar-nav class="ml-auto">
-        <b-nav-item href="#" :to="'cart'" >Корзина (0)</b-nav-item>
-        <b-nav-item href="#" :to="'profile'" class="ml-4">Глеб Кушедов</b-nav-item>
+
+            <b-nav-item v-if="$store.state.is_logged" href="#" :to="'cart'" >Корзина (0)</b-nav-item>
+            <b-nav-item v-if="$store.state.is_logged" :to="'profile'" class="ml-4">Глеб Кушедов</b-nav-item>
+            <b-nav-item v-if="$store.state.is_logged" v-on:click="logout" class="ml-4">Выйти</b-nav-item>
+
+            <b-nav-item v-if="!$store.state.is_logged" :to="'login'" class="ml-4">Войти</b-nav-item>
+
         </b-navbar-nav>
+
       </b-collapse>
     </b-navbar>
   </div>
 </template>
 
 <script>
+
+    export default {
+
+        data() {
+            return {
+                tokenok: false,
+            }
+        },
+
+        methods: {
+
+            logout: function() {
+
+                this.$store.dispatch('make_logout');
+
+                this.$router.push('/login');
+
+            }
+        },
+
+        created() {
+
+            var token = this.$auth.$storage.getLocalStorage("token");
+
+            if (token!=null){
+                this.tokenok = true;
+            }
+
+        },
+
+    }
 
 </script>
 
