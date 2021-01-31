@@ -14,9 +14,32 @@
     </b-jumbotron>
 
     <b-card-group v-for="item in $store.state.items" deck class="items-cards">
-      <b-col cols="12">
-        <card :id="item.id" :img="item.image" :title="item.title" :price="item.price" />
+
+      <b-col cols="4">
+          <b-card class=""
+                  :title= "item.title"
+                  :img-src= "item.img"
+                  img-alt=""
+                  img-top
+                  img-width="300"
+                  :to="'boxes'"
+          >
+
+              <b-row class="pt-3" align-v="center">
+
+                  <b-col>
+                      <b-button :to="'boxes/'+item.id" variant="primary">Подробней</b-button>
+                  </b-col>
+
+                  <b-col class="items-cards-price">
+                      {{ item.price }} P
+                  </b-col>
+
+              </b-row>
+
+          </b-card>
       </b-col>
+
     </b-card-group>
 
   </div>
@@ -45,15 +68,13 @@ export default {
     }
   },
 
-    methods: {
+  methods: {
 
-        loadData: function() {
+    loadData: function() {
+        this.$store.dispatch('fetch_items');
+    }
 
-            this.$store.dispatch('fetch_items');
-
-        }
-
-    },
+  },
 
   created() {
 
@@ -79,7 +100,7 @@ export default {
   }
   &-price {
     padding: .75rem 1rem;
-    font-size: 27px;
+    font-size: 20px;
   }
 }
 .reviews-head {

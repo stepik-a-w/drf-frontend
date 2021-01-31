@@ -5,7 +5,9 @@
             :img-src= "img"
             img-alt=""
             img-top
-            img-width="300">
+            img-width="300"
+            :to="'boxes'"
+    >
 
         <b-row class="pt-3" align-v="center">
 

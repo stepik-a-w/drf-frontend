@@ -6,6 +6,8 @@ export default {
         '@nuxtjs/auth-next',
     ],
 
+    target: 'static',
+
     css: [
         '~assets/styles/global.css',
         ],
